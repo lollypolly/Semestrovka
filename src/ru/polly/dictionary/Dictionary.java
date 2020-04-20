@@ -49,13 +49,13 @@ public class Dictionary {
 
     public void insert(String k, String v) {
         String[] values = v.split(",");
-        for (int i = 0; i < values.length; i++) values[i] = values[i].trim();
+        for (int i = 0; i < values.length; i++) values[i] = values[i].trim().toLowerCase();
 
-        arr.put(k, new EndlessArray<>(values));
+        arr.put(k.toLowerCase(), new EndlessArray<>(values));
     }
 
     public void delete(String k) {
-        arr.remove(k);
+        arr.remove(k.toLowerCase());
     }
 
     public Set<String> unique() {
@@ -85,7 +85,7 @@ public class Dictionary {
         String[] tranlated = text.split(" ");
 
         for (int i = 0; i < tranlated.length; i++) {
-            tranlated[i] = tranlated[i].toLowerCase();
+            tranlated[i] = tranlated[i].trim().toLowerCase();
             if (arr.containsKey(tranlated[i])) tranlated[i] = arr.get(tranlated[i]).get(0);
         }
 
